@@ -613,8 +613,13 @@ function renderExerciseSection(ex, t) {
   const handBadgeClass = isTreble ? 'hand-badge' : 'hand-badge hand-badge-lh';
   const handText = isTreble ? t('exercises.rh') : t('exercises.lh');
 
-  const titleText = ex.title || t(`exercises.ex${ex.id}Title`, { n: ex.id }) || `Exercise ${ex.id}`;
-  const subText = ex.subtitle || t(`exercises.ex${ex.id}Sub`, { count: ex.notes.length }) || `(${ex.notes.length} notes)`;
+  const localizedTitle = t(`exercises.ex${ex.id}Title`, { n: ex.id });
+  const hasLocalizedTitle = localizedTitle && localizedTitle !== `exercises.ex${ex.id}Title`;
+  const titleText = ex.title || (hasLocalizedTitle ? localizedTitle : `Exercise ${ex.id}`);
+
+  const localizedSub = t(`exercises.ex${ex.id}Sub`, { count: ex.notes.length });
+  const hasLocalizedSub = localizedSub && localizedSub !== `exercises.ex${ex.id}Sub`;
+  const subText = ex.subtitle || (hasLocalizedSub ? localizedSub : `(${ex.notes.length} notes)`);
 
   return `
   <div class="exercise-section">

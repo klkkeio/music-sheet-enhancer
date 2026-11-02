@@ -89,3 +89,51 @@ test('generator: handles arbitrary exercise count with dynamic pagination', () =
   assert.ok(html.includes('Page 1 of 2'));
   assert.ok(html.includes('Page 2 of 2'));
 });
+
+test('generator: ensures language consistency without mixing Traditional and Simplified Chinese', () => {
+  const htmlTw = generateWorkbookHtml({
+    exercises,
+    locale: 'zh-TW',
+    isAnswerKey: false,
+    standalone: false
+  });
+
+  const htmlHk = generateWorkbookHtml({
+    exercises,
+    locale: 'zh-HK',
+    isAnswerKey: false,
+    standalone: false
+  });
+
+  const htmlCn = generateWorkbookHtml({
+    exercises,
+    locale: 'zh-CN',
+    isAnswerKey: false,
+    standalone: false
+  });
+
+  const htmlEn = generateWorkbookHtml({
+    exercises,
+    locale: 'en',
+    isAnswerKey: false,
+    standalone: false
+  });
+
+  // zh-TW and zh-HK must use Traditional Chinese in titles and subtitles
+  assert.ok(htmlTw.includes('第 1 題 · 高音譜號【線上的音】'));
+  assert.ok(htmlTw.includes('第 2 題 · 高音譜號【間裡的音】'));
+  assert.ok(htmlHk.includes('第 1 題 · 高音譜號【線上的音】'));
+  assert.ok(htmlHk.includes('第 2 題 · 高音譜號【間裡的音】'));
+
+  // Ensure no simplified Chinese characters in zh-TW or zh-HK titles
+  assert.ok(!htmlTw.includes('第 1 题'));
+  assert.ok(!htmlTw.includes('谱号'));
+  assert.ok(!htmlHk.includes('第 1 题'));
+  assert.ok(!htmlHk.includes('谱号'));
+
+  // zh-CN uses Simplified Chinese
+  assert.ok(htmlCn.includes('第 1 题 · 高音谱号【线上的音】'));
+
+  // en uses English
+  assert.ok(htmlEn.includes('Exercise 1 · Treble Clef [Notes on Lines]'));
+});

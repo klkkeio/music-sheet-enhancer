@@ -2,10 +2,6 @@
   {
     "id": 1,
     "clef": "treble",
-    "hand": "右手 (RH)",
-    "title": "第 1 题 · 高音谱号【线上的音】",
-    "subtitle": "Treble Clef - Lines (E - G - B - D - F)",
-    "mnemonic": "口诀：Every Good Boy Does Fine (E-G-B-D-F)",
     "notes": [
       {
         "key": "e/4",
@@ -102,10 +98,6 @@
   {
     "id": 2,
     "clef": "treble",
-    "hand": "右手 (RH)",
-    "title": "第 2 题 · 高音谱号【间里的音】",
-    "subtitle": "Treble Clef - Spaces (F - A - C - E)",
-    "mnemonic": "口诀：FACE 就像脸庞 (F-A-C-E)",
     "notes": [
       {
         "key": "f/4",
@@ -202,10 +194,6 @@
   {
     "id": 3,
     "clef": "treble",
-    "hand": "右手 (RH)",
-    "title": "第 3 题 · 高音谱号【综合认音】",
-    "subtitle": "Treble Clef - Mixed Lines & Spaces",
-    "mnemonic": "综合练习：仔细辨别是线上音还是间里音",
     "notes": [
       {
         "key": "b/4",
@@ -307,10 +295,6 @@
   {
     "id": 4,
     "clef": "bass",
-    "hand": "左手 (LH)",
-    "title": "第 4 题 · 低音谱号【线上的音】",
-    "subtitle": "Bass Clef - Lines (G - B - D - F - A)",
-    "mnemonic": "口诀：Good Boys Do Fine Always (G-B-D-F-A)",
     "notes": [
       {
         "key": "g/2",
@@ -407,10 +391,6 @@
   {
     "id": 5,
     "clef": "bass",
-    "hand": "左手 (LH)",
-    "title": "第 5 题 · 低音谱号【间里的音】",
-    "subtitle": "Bass Clef - Spaces (A - C - E - G)",
-    "mnemonic": "口诀：All Cows Eat Grass (A-C-E-G)",
     "notes": [
       {
         "key": "a/2",
@@ -522,10 +502,6 @@
   {
     "id": 6,
     "clef": "bass",
-    "hand": "左手 (LH)",
-    "title": "第 6 题 · 低音谱号【综合认音 1】",
-    "subtitle": "Bass Clef - Mixed Lines & Spaces (1)",
-    "mnemonic": "综合练习：注意低音谱号的中央C上方与下方位置",
     "notes": [
       {
         "key": "b/2",
@@ -622,10 +598,6 @@
   {
     "id": 7,
     "clef": "bass",
-    "hand": "左手 (LH)",
-    "title": "第 7 题 · 低音谱号【综合认音 2】",
-    "subtitle": "Bass Clef - Mixed Lines & Spaces (2)",
-    "mnemonic": "综合大通关：快速反应每一个低音谱号音名！",
     "notes": [
       {
         "key": "f/3",
