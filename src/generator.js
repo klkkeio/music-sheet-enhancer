@@ -245,25 +245,37 @@ function generateWorkbookHtml(options = {}) {
     }
     .info-bar {
       display: flex;
-      gap: 20px;
-      font-size: 12px;
+      gap: 24px;
+      font-size: 13px;
       font-weight: 600;
       color: #334155;
       margin-top: 6px;
-      padding: 5px 12px;
+      padding: 6px 14px;
       background: #f8fafc;
       border: 1px solid #e2e8f0;
       border-radius: 6px;
+      min-height: 44px;
+      align-items: center;
     }
     .info-item {
-      display: flex;
-      align-items: center;
-      gap: 4px;
+      display: inline-flex;
+      align-items: flex-end;
+      gap: 6px;
+      height: 30px;
+      line-height: 1.2;
     }
     .underline-fill {
-      display: inline-block;
-      min-width: 90px;
-      border-bottom: 1.5px solid #94a3b8;
+      display: inline-flex;
+      align-items: flex-end;
+      justify-content: center;
+      min-width: 120px;
+      height: 28px;
+      border-bottom: 2px solid #64748b;
+      padding-bottom: 2px;
+      vertical-align: bottom;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #1e40af;
     }
     .tip-card {
       background: #f0fdf4;
@@ -351,8 +363,8 @@ function generateWorkbookHtml(options = {}) {
     }
     .note-index {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      font-size: 9px;
-      font-weight: 600;
+      font-size: 8px;
+      font-weight: 700;
       fill: #94a3b8;
       text-anchor: middle;
     }
@@ -396,16 +408,20 @@ function generateWorkbookHtml(options = {}) {
       const svg = div.querySelector('svg');
       const boxY = 94;
       const boxW = 34;
-      const boxH = 30;
+      const boxH = 34;
 
       staveNotes.forEach((sn, idx) => {
-        const x = sn.getAbsoluteX();
+        // Calculate true mathematical center of notehead
+        const noteBeginX = sn.getNoteHeadBeginX ? sn.getNoteHeadBeginX() : sn.getAbsoluteX();
+        const noteEndX = sn.getNoteHeadEndX ? sn.getNoteHeadEndX() : (noteBeginX + (sn.getGlyphWidth ? sn.getGlyphWidth() : 16.88));
+        const noteCenterX = (noteBeginX + noteEndX) / 2;
+
         const globalIdx = startIndex + idx;
         const item = notesSlice[idx];
 
         if (isAnswerKey) {
           const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-          rect.setAttribute('x', x - boxW/2);
+          rect.setAttribute('x', noteCenterX - boxW/2);
           rect.setAttribute('y', boxY);
           rect.setAttribute('width', boxW);
           rect.setAttribute('height', boxH);
@@ -416,23 +432,23 @@ function generateWorkbookHtml(options = {}) {
           svg.appendChild(rect);
 
           const txt = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-          txt.setAttribute('x', x);
-          txt.setAttribute('y', boxY + 17);
+          txt.setAttribute('x', noteCenterX);
+          txt.setAttribute('y', boxY + 18);
           txt.setAttribute('class', 'ans-letter');
           txt.textContent = item.letter;
           svg.appendChild(txt);
 
           if (item.solfege) {
             const sol = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-            sol.setAttribute('x', x);
-            sol.setAttribute('y', boxY + 27);
+            sol.setAttribute('x', noteCenterX);
+            sol.setAttribute('y', boxY + 29);
             sol.setAttribute('class', 'ans-solfege');
             sol.textContent = item.solfege;
             svg.appendChild(sol);
           }
         } else {
           const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-          rect.setAttribute('x', x - boxW/2);
+          rect.setAttribute('x', noteCenterX - boxW/2);
           rect.setAttribute('y', boxY);
           rect.setAttribute('width', boxW);
           rect.setAttribute('height', boxH);
@@ -442,9 +458,10 @@ function generateWorkbookHtml(options = {}) {
           rect.setAttribute('stroke-width', '1.5');
           svg.appendChild(rect);
 
+          // Question number moved to the bottom of the answer box
           const hint = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-          hint.setAttribute('x', x);
-          hint.setAttribute('y', boxY + 19);
+          hint.setAttribute('x', noteCenterX);
+          hint.setAttribute('y', boxY + boxH - 4);
           hint.setAttribute('class', 'note-index');
           hint.textContent = '#' + globalIdx;
           svg.appendChild(hint);
@@ -632,7 +649,7 @@ function generateSinglePageHtml(options = {}) {
   <style>
     @page {
       size: A4 portrait;
-      margin: 6mm 8mm 6mm 8mm;
+      margin: 4mm 8mm 4mm 8mm;
     }
     * {
       box-sizing: border-box;
@@ -649,7 +666,7 @@ function generateSinglePageHtml(options = {}) {
     .page {
       width: 210mm;
       height: 297mm;
-      padding: 6mm 10mm;
+      padding: 4mm 8mm;
       margin: 0 auto;
       background: white;
       display: flex;
@@ -677,16 +694,25 @@ function generateSinglePageHtml(options = {}) {
       font-size: 12px;
       font-weight: 600;
       color: #334155;
-      margin: 3px 0 4px 0;
-      padding: 3px 10px;
+      margin: 2px 0 2px 0;
+      padding: 4px 12px;
       background: #f8fafc;
       border: 1px solid #e2e8f0;
       border-radius: 4px;
+      align-items: center;
+    }
+    .info-blank {
+      display: inline-block;
+      min-width: 90px;
+      height: 20px;
+      border-bottom: 1.5px solid #64748b;
+      vertical-align: bottom;
+      margin-left: 4px;
     }
     .exercise-row {
       display: flex;
       align-items: center;
-      margin-bottom: 1px;
+      margin-bottom: 0px;
     }
     .exercise-label {
       width: 52px;
@@ -699,7 +725,7 @@ function generateSinglePageHtml(options = {}) {
     }
     .stave-container {
       flex-grow: 1;
-      height: 104px;
+      height: 124px;
     }
     .stave-container svg {
       width: 100%;
@@ -729,10 +755,10 @@ function generateSinglePageHtml(options = {}) {
         <div class="subtitle">${escapeHtml(subtitle)}</div>
       </div>
       <div class="info-bar">
-        <div>${escapeHtml(t('common.studentName'))} ${isAnswerKey ? escapeHtml(t('common.standardAnswer')) : '_________________'}</div>
-        <div>${escapeHtml(t('common.date'))} _________________</div>
+        <div>${escapeHtml(t('common.studentName'))} <span class="info-blank" style="${isAnswerKey ? 'display:inline-flex;align-items:flex-end;color:#1e40af;font-weight:bold;' : ''}">${isAnswerKey ? '&nbsp;' + escapeHtml(t('common.standardAnswer')) : ''}</span></div>
+        <div>${escapeHtml(t('common.date'))} <span class="info-blank"></span></div>
         <div>${escapeHtml(clefHint)}</div>
-        <div>${escapeHtml(t('common.score'))} _________</div>
+        <div>${escapeHtml(t('common.score'))} <span class="info-blank" style="min-width:60px;"></span></div>
       </div>
 
       ${exercises.map(ex => `
@@ -763,12 +789,12 @@ function generateSinglePageHtml(options = {}) {
       if (!div) return;
 
       const w = 705;
-      const h = 104;
+      const h = 124;
       const renderer = new Renderer(div, Renderer.Backends.SVG);
       renderer.resize(w, h);
       const context = renderer.getContext();
 
-      const stave = new Stave(5, 5, w - 10);
+      const stave = new Stave(5, 0, w - 10);
       stave.addClef(ex.clef);
       stave.setContext(context).draw();
 
@@ -781,18 +807,23 @@ function generateSinglePageHtml(options = {}) {
       Formatter.FormatAndDraw(context, stave, staveNotes);
 
       const svg = div.querySelector('svg');
-      const lineY = 96;
-      const boxW = 22;
-      const boxH = 19;
+      const boxY = 96;
+      const boxW = 24;
+      const boxH = 22;
+      const lineY = 107;
 
       staveNotes.forEach((sn, idx) => {
-        const x = sn.getAbsoluteX();
+        // Calculate true mathematical center of notehead
+        const noteBeginX = sn.getNoteHeadBeginX ? sn.getNoteHeadBeginX() : sn.getAbsoluteX();
+        const noteEndX = sn.getNoteHeadEndX ? sn.getNoteHeadEndX() : (noteBeginX + (sn.getGlyphWidth ? sn.getGlyphWidth() : 16.88));
+        const noteCenterX = (noteBeginX + noteEndX) / 2;
+
         const item = ex.notes[idx];
 
         if (isAnswerKey) {
           const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-          rect.setAttribute('x', x - boxW/2);
-          rect.setAttribute('y', lineY - 14);
+          rect.setAttribute('x', noteCenterX - boxW/2);
+          rect.setAttribute('y', boxY);
           rect.setAttribute('width', boxW);
           rect.setAttribute('height', boxH);
           rect.setAttribute('rx', '3');
@@ -802,15 +833,15 @@ function generateSinglePageHtml(options = {}) {
           svg.appendChild(rect);
 
           const txt = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-          txt.setAttribute('x', x);
-          txt.setAttribute('y', lineY);
+          txt.setAttribute('x', noteCenterX);
+          txt.setAttribute('y', boxY + 15);
           txt.setAttribute('class', 'ans-letter');
           txt.textContent = item.letter;
           svg.appendChild(txt);
         } else {
           const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-          line.setAttribute('x1', x - 10);
-          line.setAttribute('x2', x + 10);
+          line.setAttribute('x1', noteCenterX - 11);
+          line.setAttribute('x2', noteCenterX + 11);
           line.setAttribute('y1', lineY);
           line.setAttribute('y2', lineY);
           line.setAttribute('stroke', '#64748b');
