@@ -245,30 +245,38 @@ function generateWorkbookHtml(options = {}) {
     }
     .info-bar {
       display: flex;
-      gap: 24px;
+      justify-content: flex-start;
+      gap: 36px;
       font-size: 13px;
-      font-weight: 600;
       color: #334155;
       margin-top: 6px;
-      padding: 6px 14px;
+      padding: 6px 16px;
       background: #f8fafc;
       border: 1px solid #e2e8f0;
       border-radius: 6px;
       min-height: 44px;
       align-items: center;
+      flex-wrap: nowrap;
     }
     .info-item {
       display: inline-flex;
       align-items: flex-end;
       gap: 6px;
+      white-space: nowrap;
       height: 30px;
       line-height: 1.2;
+    }
+    .info-label {
+      font-weight: 700;
+      color: #334155;
+      white-space: nowrap;
+      margin-bottom: 2px;
     }
     .underline-fill {
       display: inline-flex;
       align-items: flex-end;
       justify-content: center;
-      min-width: 120px;
+      min-width: 125px;
       height: 28px;
       border-bottom: 2px solid #64748b;
       padding-bottom: 2px;
@@ -276,6 +284,7 @@ function generateWorkbookHtml(options = {}) {
       font-size: 13.5px;
       font-weight: 700;
       color: #1e40af;
+      white-space: nowrap;
     }
     .tip-card {
       background: #f0fdf4;
@@ -283,7 +292,7 @@ function generateWorkbookHtml(options = {}) {
       border-left: 4px solid #16a34a;
       padding: 5px 12px;
       border-radius: 6px;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       font-size: 11.5px;
       color: #166534;
       display: flex;
@@ -295,7 +304,7 @@ function generateWorkbookHtml(options = {}) {
       color: #14532d;
     }
     .exercise-section {
-      margin-bottom: 8px;
+      margin-bottom: 26px;
     }
     .exercise-header {
       display: flex;
@@ -329,13 +338,13 @@ function generateWorkbookHtml(options = {}) {
     }
     .stave-wrapper {
       position: relative;
-      margin-bottom: 2px;
+      margin-bottom: 4px;
       background: white;
       border-radius: 6px;
     }
     .stave-wrapper svg {
       width: 100%;
-      height: 135px;
+      height: 172px;
       display: block;
     }
     .page-footer {
@@ -356,16 +365,17 @@ function generateWorkbookHtml(options = {}) {
     }
     .ans-solfege {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      font-size: 9.5px;
-      font-weight: 700;
-      fill: #64748b;
+      font-size: 10px;
+      font-weight: 400;
+      fill: #475569;
       text-anchor: middle;
+      letter-spacing: 0.3px;
     }
     .note-index {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      font-size: 8px;
-      font-weight: 700;
-      fill: #94a3b8;
+      font-size: 9.5px;
+      font-weight: 500;
+      fill: #64748b;
       text-anchor: middle;
     }
   </style>
@@ -385,13 +395,13 @@ function generateWorkbookHtml(options = {}) {
       div.innerHTML = '';
 
       const w = 680;
-      const h = 135;
+      const h = 172;
       const renderer = new Renderer(div, Renderer.Backends.SVG);
       renderer.resize(w, h);
       const context = renderer.getContext();
 
       const staveX = 5;
-      const staveY = 5;
+      const staveY = 10;
       const staveW = w - 10;
       const stave = new Stave(staveX, staveY, staveW);
       stave.addClef(clef);
@@ -406,9 +416,10 @@ function generateWorkbookHtml(options = {}) {
       Formatter.FormatAndDraw(context, stave, staveNotes);
 
       const svg = div.querySelector('svg');
-      const boxY = 94;
+      // Placed with ample space (30px) below bottom staff line (y=90) to support lower ledger lines
+      const boxY = 120;
       const boxW = 34;
-      const boxH = 34;
+      const boxH = 32;
 
       staveNotes.forEach((sn, idx) => {
         // Calculate true mathematical center of notehead
@@ -433,7 +444,7 @@ function generateWorkbookHtml(options = {}) {
 
           const txt = document.createElementNS('http://www.w3.org/2000/svg', 'text');
           txt.setAttribute('x', noteCenterX);
-          txt.setAttribute('y', boxY + 18);
+          txt.setAttribute('y', boxY + 17);
           txt.setAttribute('class', 'ans-letter');
           txt.textContent = item.letter;
           svg.appendChild(txt);
@@ -441,12 +452,21 @@ function generateWorkbookHtml(options = {}) {
           if (item.solfege) {
             const sol = document.createElementNS('http://www.w3.org/2000/svg', 'text');
             sol.setAttribute('x', noteCenterX);
-            sol.setAttribute('y', boxY + 29);
+            sol.setAttribute('y', boxY + 28);
             sol.setAttribute('class', 'ans-solfege');
             sol.textContent = item.solfege;
             svg.appendChild(sol);
           }
+
+          // Add question number under the block on answer key to align with question sheet
+          const hint = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+          hint.setAttribute('x', noteCenterX);
+          hint.setAttribute('y', boxY + boxH + 13);
+          hint.setAttribute('class', 'note-index');
+          hint.textContent = '#' + globalIdx;
+          svg.appendChild(hint);
         } else {
+          // Worksheet: Completely empty block inside for student handwriting
           const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
           rect.setAttribute('x', noteCenterX - boxW/2);
           rect.setAttribute('y', boxY);
@@ -458,10 +478,10 @@ function generateWorkbookHtml(options = {}) {
           rect.setAttribute('stroke-width', '1.5');
           svg.appendChild(rect);
 
-          // Question number moved to the bottom of the answer box
+          // Question number placed cleanly UNDER the block with thinner font
           const hint = document.createElementNS('http://www.w3.org/2000/svg', 'text');
           hint.setAttribute('x', noteCenterX);
-          hint.setAttribute('y', boxY + boxH - 4);
+          hint.setAttribute('y', boxY + boxH + 13);
           hint.setAttribute('class', 'note-index');
           hint.textContent = '#' + globalIdx;
           svg.appendChild(hint);
@@ -504,9 +524,9 @@ function renderPage({ pageNum, totalPages = 4, totalScoreText, subtitle, tip, fo
         </div>
         <div class="sub-title">${escapeHtml(subtitle)}</div>
         <div class="info-bar">
-          <div class="info-item">${escapeHtml(t('common.studentName'))} <span class="underline-fill">${isAnswerKey ? '&nbsp;&nbsp;' + escapeHtml(t('common.standardAnswer')) : ''}</span></div>
-          <div class="info-item">${escapeHtml(t('common.date'))} <span class="underline-fill"></span></div>
-          <div class="info-item">${escapeHtml(t('common.score'))} <span class="underline-fill">${isAnswerKey ? '&nbsp;&nbsp;' + totalScoreText : ''}</span></div>
+          <div class="info-item"><span class="info-label">${escapeHtml(t('common.studentName'))}</span><span class="underline-fill">${isAnswerKey ? '&nbsp;&nbsp;' + escapeHtml(t('common.standardAnswer')) : ''}</span></div>
+          <div class="info-item"><span class="info-label">${escapeHtml(t('common.date'))}</span><span class="underline-fill"></span></div>
+          <div class="info-item"><span class="info-label">${escapeHtml(t('common.score'))}</span><span class="underline-fill">${isAnswerKey ? '&nbsp;&nbsp;' + totalScoreText : ''}</span></div>
         </div>
       </div>
 
@@ -542,8 +562,8 @@ function renderPage4({ pageNum, totalPages = 4, totalScoreText, subtitle, footer
         </div>
         <div class="sub-title">${escapeHtml(subtitle)}</div>
         <div class="info-bar">
-          <div class="info-item">${escapeHtml(t('common.studentName'))} <span class="underline-fill">${isAnswerKey ? '&nbsp;&nbsp;' + escapeHtml(t('common.standardAnswer')) : ''}</span></div>
-          <div class="info-item">${escapeHtml(t('common.totalScore'))} <span class="underline-fill" style="color:#2563eb; font-weight:bold;">${isAnswerKey ? '&nbsp;&nbsp;' + totalScoreText : `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/ ${totalScoreText.split('/')[0].trim()} ⭐`}</span></div>
+          <div class="info-item"><span class="info-label">${escapeHtml(t('common.studentName'))}</span><span class="underline-fill">${isAnswerKey ? '&nbsp;&nbsp;' + escapeHtml(t('common.standardAnswer')) : ''}</span></div>
+          <div class="info-item"><span class="info-label">${escapeHtml(t('common.totalScore'))}</span><span class="underline-fill" style="color:#2563eb; font-weight:bold;">${isAnswerKey ? '&nbsp;&nbsp;' + totalScoreText : `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/ ${totalScoreText.split('/')[0].trim()} ⭐`}</span></div>
         </div>
       </div>
 
@@ -691,6 +711,7 @@ function generateSinglePageHtml(options = {}) {
     .info-bar {
       display: flex;
       justify-content: space-between;
+      gap: 16px;
       font-size: 12px;
       font-weight: 600;
       color: #334155;
@@ -700,6 +721,19 @@ function generateSinglePageHtml(options = {}) {
       border: 1px solid #e2e8f0;
       border-radius: 4px;
       align-items: center;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+    }
+    .info-item {
+      display: inline-flex;
+      align-items: flex-end;
+      gap: 6px;
+      white-space: nowrap;
+    }
+    .info-label {
+      font-weight: 700;
+      color: #334155;
+      white-space: nowrap;
     }
     .info-blank {
       display: inline-block;
@@ -708,6 +742,7 @@ function generateSinglePageHtml(options = {}) {
       border-bottom: 1.5px solid #64748b;
       vertical-align: bottom;
       margin-left: 4px;
+      white-space: nowrap;
     }
     .exercise-row {
       display: flex;
@@ -725,7 +760,7 @@ function generateSinglePageHtml(options = {}) {
     }
     .stave-container {
       flex-grow: 1;
-      height: 124px;
+      height: 126px;
     }
     .stave-container svg {
       width: 100%;
@@ -755,10 +790,10 @@ function generateSinglePageHtml(options = {}) {
         <div class="subtitle">${escapeHtml(subtitle)}</div>
       </div>
       <div class="info-bar">
-        <div>${escapeHtml(t('common.studentName'))} <span class="info-blank" style="${isAnswerKey ? 'display:inline-flex;align-items:flex-end;color:#1e40af;font-weight:bold;' : ''}">${isAnswerKey ? '&nbsp;' + escapeHtml(t('common.standardAnswer')) : ''}</span></div>
-        <div>${escapeHtml(t('common.date'))} <span class="info-blank"></span></div>
-        <div>${escapeHtml(clefHint)}</div>
-        <div>${escapeHtml(t('common.score'))} <span class="info-blank" style="min-width:60px;"></span></div>
+        <div class="info-item"><span class="info-label">${escapeHtml(t('common.studentName'))}</span><span class="info-blank" style="${isAnswerKey ? 'display:inline-flex;align-items:flex-end;color:#1e40af;font-weight:bold;' : ''}">${isAnswerKey ? '&nbsp;' + escapeHtml(t('common.standardAnswer')) : ''}</span></div>
+        <div class="info-item"><span class="info-label">${escapeHtml(t('common.date'))}</span><span class="info-blank"></span></div>
+        <div class="info-item" style="color:#64748b; font-size:11px;">${escapeHtml(clefHint)}</div>
+        <div class="info-item"><span class="info-label">${escapeHtml(t('common.score'))}</span><span class="info-blank" style="min-width:60px;"></span></div>
       </div>
 
       ${exercises.map(ex => `
@@ -789,12 +824,12 @@ function generateSinglePageHtml(options = {}) {
       if (!div) return;
 
       const w = 705;
-      const h = 124;
+      const h = 126;
       const renderer = new Renderer(div, Renderer.Backends.SVG);
       renderer.resize(w, h);
       const context = renderer.getContext();
 
-      const stave = new Stave(5, 0, w - 10);
+      const stave = new Stave(5, -2, w - 10);
       stave.addClef(ex.clef);
       stave.setContext(context).draw();
 
@@ -807,10 +842,10 @@ function generateSinglePageHtml(options = {}) {
       Formatter.FormatAndDraw(context, stave, staveNotes);
 
       const svg = div.querySelector('svg');
-      const boxY = 96;
+      const boxY = 99;
       const boxW = 24;
       const boxH = 22;
-      const lineY = 107;
+      const lineY = 110;
 
       staveNotes.forEach((sn, idx) => {
         // Calculate true mathematical center of notehead

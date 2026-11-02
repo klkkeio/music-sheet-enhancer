@@ -5,10 +5,10 @@
     "direction": "ltr"
   },
   "common": {
-    "studentName": "學生姓名：",
-    "date": "完成日期：",
-    "score": "本頁得分：",
-    "totalScore": "總得分：",
+    "studentName": "姓名：",
+    "date": "日期：",
+    "score": "得分：",
+    "totalScore": "總分：",
     "pageOf": "第 {page} 頁 / 共 {total} 頁",
     "standardAnswer": "標準答案"
   },

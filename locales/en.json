@@ -5,10 +5,10 @@
     "direction": "ltr"
   },
   "common": {
-    "studentName": "Student Name: ",
+    "studentName": "Name: ",
     "date": "Date: ",
-    "score": "Page Score: ",
-    "totalScore": "Total Score: ",
+    "score": "Score: ",
+    "totalScore": "Total: ",
     "pageOf": "Page {page} of {total}",
     "standardAnswer": "Standard Answer"
   },
