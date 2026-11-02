@@ -215,7 +215,7 @@ function generateWorkbookHtml(options = {}) {
     .header {
       border-bottom: 2px solid #e2e8f0;
       padding-bottom: 6px;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
     }
     .title-row {
       display: flex;
@@ -292,7 +292,8 @@ function generateWorkbookHtml(options = {}) {
       border-left: 4px solid #16a34a;
       padding: 5px 12px;
       border-radius: 6px;
-      margin-bottom: 10px;
+      margin-top: 6px;
+      margin-bottom: 22px;
       font-size: 11.5px;
       color: #166534;
       display: flex;
@@ -304,13 +305,14 @@ function generateWorkbookHtml(options = {}) {
       color: #14532d;
     }
     .exercise-section {
-      margin-bottom: 26px;
+      margin-bottom: 34px;
     }
     .exercise-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 2px;
+      margin-top: 8px;
+      margin-bottom: 8px;
     }
     .exercise-title {
       font-size: 14px;
@@ -359,8 +361,8 @@ function generateWorkbookHtml(options = {}) {
     .ans-letter {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       font-size: 15px;
-      font-weight: 800;
-      fill: #2563eb;
+      font-weight: 700;
+      fill: #1d4ed8;
       text-anchor: middle;
     }
     .ans-solfege {
@@ -436,10 +438,9 @@ function generateWorkbookHtml(options = {}) {
           rect.setAttribute('y', boxY);
           rect.setAttribute('width', boxW);
           rect.setAttribute('height', boxH);
-          rect.setAttribute('rx', '5');
+          rect.setAttribute('rx', '6');
           rect.setAttribute('fill', '#eff6ff');
-          rect.setAttribute('stroke', '#3b82f6');
-          rect.setAttribute('stroke-width', '1.5');
+          // No border stroke on box - crystal clear borderless pill
           svg.appendChild(rect);
 
           const txt = document.createElementNS('http://www.w3.org/2000/svg', 'text');
@@ -768,9 +769,9 @@ function generateSinglePageHtml(options = {}) {
     }
     .ans-letter {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      font-size: 12px;
-      font-weight: 800;
-      fill: #2563eb;
+      font-size: 13px;
+      font-weight: 600;
+      fill: #1d4ed8;
       text-anchor: middle;
     }
     .footer {
@@ -861,15 +862,14 @@ function generateSinglePageHtml(options = {}) {
           rect.setAttribute('y', boxY);
           rect.setAttribute('width', boxW);
           rect.setAttribute('height', boxH);
-          rect.setAttribute('rx', '3');
+          rect.setAttribute('rx', '4');
           rect.setAttribute('fill', '#eff6ff');
-          rect.setAttribute('stroke', '#3b82f6');
-          rect.setAttribute('stroke-width', '1');
+          // No border stroke on box - crystal clear borderless pill
           svg.appendChild(rect);
 
           const txt = document.createElementNS('http://www.w3.org/2000/svg', 'text');
           txt.setAttribute('x', noteCenterX);
-          txt.setAttribute('y', boxY + 15);
+          txt.setAttribute('y', boxY + 16);
           txt.setAttribute('class', 'ans-letter');
           txt.textContent = item.letter;
           svg.appendChild(txt);
