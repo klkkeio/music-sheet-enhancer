@@ -289,20 +289,52 @@ function generateWorkbookHtml(options = {}) {
     .tip-card {
       background: #f0fdf4;
       border: 1px solid #bbf7d0;
-      border-left: 4px solid #16a34a;
-      padding: 5px 12px;
+      border-left: 4.5px solid #16a34a;
+      padding: 7px 14px;
       border-radius: 6px;
       margin-top: 6px;
-      margin-bottom: 22px;
-      font-size: 11.5px;
-      color: #166534;
+      margin-bottom: 20px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      gap: 16px;
     }
-    .tip-title {
-      font-weight: 700;
+    .tip-badge {
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #166534;
+      background: #dcfce7;
+      border: 1px solid #86efac;
+      padding: 5px 10px;
+      border-radius: 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      line-height: 1.2;
+    }
+    .tip-lines {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 11.5px;
       color: #14532d;
+      line-height: 1.35;
+    }
+    .tip-line {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+    .tip-line strong {
+      color: #14532d;
+      font-weight: 700;
+    }
+    .tip-bullet {
+      color: #16a34a;
+      font-size: 13px;
+      font-weight: bold;
+      flex-shrink: 0;
     }
     .exercise-section {
       margin-bottom: 34px;
@@ -506,6 +538,60 @@ function generateWorkbookHtml(options = {}) {
 }
 
 /**
+ * Render multi-line tip card with badge and separate mnemonic rows
+ * @param {string|object} tipData
+ * @returns {string}
+ */
+function renderTipCard(tipData) {
+  if (!tipData) return '';
+
+  let title = '';
+  let lines = [];
+
+  if (typeof tipData === 'object' && tipData !== null) {
+    title = tipData.title || '';
+    lines = Array.isArray(tipData.lines) ? tipData.lines : [];
+  } else if (typeof tipData === 'string') {
+    if (tipData.includes('|') || tipData.includes('\n')) {
+      const parts = tipData.split(/[|\n]/).map(s => s.trim()).filter(Boolean);
+      const first = parts[0];
+      const match = first.match(/^(💡\s*[^：:!！]+[：:!！])\s*(.*)$/);
+      if (match) {
+        title = match[1].replace(/[：:!！]\s*$/, '').trim();
+        lines.push(match[2].trim());
+      } else {
+        lines.push(first);
+      }
+      for (let i = 1; i < parts.length; i++) {
+        lines.push(parts[i]);
+      }
+    } else {
+      lines.push(tipData);
+    }
+  }
+
+  if (lines.length === 0) return '';
+
+  const linesHtml = lines.map(line => {
+    const colonIdx = line.indexOf('：') !== -1 ? line.indexOf('：') : line.indexOf(':');
+    if (colonIdx !== -1) {
+      const label = line.slice(0, colonIdx + 1);
+      const rest = line.slice(colonIdx + 1).trim();
+      return `<div class="tip-line"><span class="tip-bullet">•</span><strong>${escapeHtml(label)}</strong> <span>${escapeHtml(rest)}</span></div>`;
+    }
+    return `<div class="tip-line"><span class="tip-bullet">•</span><span>${escapeHtml(line)}</span></div>`;
+  }).join('\n');
+
+  return `
+  <div class="tip-card">
+    ${title ? `<div class="tip-badge">${escapeHtml(title)}</div>` : ''}
+    <div class="tip-lines">
+      ${linesHtml}
+    </div>
+  </div>`;
+}
+
+/**
  * Render standard 2-exercise page
  */
 function renderPage({ pageNum, totalPages = 4, totalScoreText, subtitle, tip, footer, exercises, isAnswerKey, t }) {
@@ -531,7 +617,7 @@ function renderPage({ pageNum, totalPages = 4, totalScoreText, subtitle, tip, fo
         </div>
       </div>
 
-      ${tip ? `<div class="tip-card"><div>${escapeHtml(tip)}</div></div>` : ''}
+      ${renderTipCard(tip)}
 
       ${exercises.map(ex => renderExerciseSection(ex, t)).join('\n')}
     </div>
