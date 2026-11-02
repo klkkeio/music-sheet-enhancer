@@ -67,53 +67,104 @@ function generateWorkbookHtml(options = {}) {
     : 'background: #e0e7ff; color: #3730a3;';
 
   const defaultSplits = { 1: 9, 2: 9, 3: 10, 4: 9, 5: 11, 6: 9, 7: 10 };
+  const isStandard7 = exercises.length === 7;
+  const totalNotesAll = exercises.reduce((sum, ex) => sum + ex.notes.length, 0);
 
-  // Generate Pages
-  const pagesHtml = [
-    // Page 1: Exercises 1 & 2
-    renderPage({
-      pageNum: 1,
-      totalScoreText: '36 / 36',
-      subtitle: t('workbook.page1Subtitle'),
-      tip: t('workbook.tips.treble'),
-      footer: t('workbook.page1Footer'),
-      exercises: exercises.slice(0, 2),
-      isAnswerKey,
-      t
-    }),
-    // Page 2: Exercises 3 & 4
-    renderPage({
-      pageNum: 2,
-      totalScoreText: '37 / 37',
-      subtitle: t('workbook.page2Subtitle'),
-      tip: t('workbook.tips.bass'),
-      footer: t('workbook.page2Footer'),
-      exercises: exercises.slice(2, 4),
-      isAnswerKey,
-      t
-    }),
-    // Page 3: Exercises 5 & 6
-    renderPage({
-      pageNum: 3,
-      totalScoreText: '39 / 39',
-      subtitle: t('workbook.page3Subtitle'),
-      tip: null,
-      footer: t('workbook.page3Footer'),
-      exercises: exercises.slice(4, 6),
-      isAnswerKey,
-      t
-    }),
-    // Page 4: Exercise 7 & Cheat Sheet
-    renderPage4({
-      pageNum: 4,
-      totalScoreText: '131 / 131 ⭐',
-      subtitle: t('workbook.page4Subtitle'),
-      footer: t('workbook.page4Footer'),
-      exercise: exercises[6],
-      isAnswerKey,
-      t
-    })
-  ].join('\n');
+  let pagesHtml;
+
+  if (isStandard7) {
+    // Standard 4-Page Course Layout
+    pagesHtml = [
+      renderPage({
+        pageNum: 1,
+        totalPages: 4,
+        totalScoreText: '36 / 36',
+        subtitle: t('workbook.page1Subtitle'),
+        tip: t('workbook.tips.treble'),
+        footer: t('workbook.page1Footer'),
+        exercises: exercises.slice(0, 2),
+        isAnswerKey,
+        t
+      }),
+      renderPage({
+        pageNum: 2,
+        totalPages: 4,
+        totalScoreText: '37 / 37',
+        subtitle: t('workbook.page2Subtitle'),
+        tip: t('workbook.tips.bass'),
+        footer: t('workbook.page2Footer'),
+        exercises: exercises.slice(2, 4),
+        isAnswerKey,
+        t
+      }),
+      renderPage({
+        pageNum: 3,
+        totalPages: 4,
+        totalScoreText: '39 / 39',
+        subtitle: t('workbook.page3Subtitle'),
+        tip: null,
+        footer: t('workbook.page3Footer'),
+        exercises: exercises.slice(4, 6),
+        isAnswerKey,
+        t
+      }),
+      renderPage4({
+        pageNum: 4,
+        totalPages: 4,
+        totalScoreText: '131 / 131 ⭐',
+        subtitle: t('workbook.page4Subtitle'),
+        footer: t('workbook.page4Footer'),
+        exercise: exercises[6],
+        isAnswerKey,
+        t
+      })
+    ].join('\n');
+  } else {
+    // Dynamic Pagination for Arbitrary Exercise Datasets
+    const totalPages = Math.ceil(exercises.length / 2);
+    const pages = [];
+
+    for (let p = 0; p < totalPages; p++) {
+      const pageNum = p + 1;
+      const isLastPage = pageNum === totalPages;
+      const pageExercises = exercises.slice(p * 2, p * 2 + 2);
+      const pageNotesCount = pageExercises.reduce((sum, ex) => sum + ex.notes.length, 0);
+
+      // Has treble or bass clefs
+      const hasTreble = pageExercises.some(ex => ex.clef === 'treble');
+      const hasBass = pageExercises.some(ex => ex.clef === 'bass');
+      const tip = hasTreble && !hasBass
+        ? t('workbook.tips.treble')
+        : (!hasTreble && hasBass ? t('workbook.tips.bass') : null);
+
+      if (isLastPage && pageExercises.length === 1) {
+        // 1 exercise on final page: render with cheat sheet card
+        pages.push(renderPage4({
+          pageNum,
+          totalPages,
+          totalScoreText: `${totalNotesAll} / ${totalNotesAll} ⭐`,
+          subtitle: t('workbook.page4Subtitle'),
+          footer: t('workbook.page4Footer'),
+          exercise: pageExercises[0],
+          isAnswerKey,
+          t
+        }));
+      } else {
+        pages.push(renderPage({
+          pageNum,
+          totalPages,
+          totalScoreText: `${pageNotesCount} / ${pageNotesCount}`,
+          subtitle: t('workbook.page1Subtitle'),
+          tip,
+          footer: isLastPage ? t('workbook.page4Footer') : t('workbook.page1Footer'),
+          exercises: pageExercises,
+          isAnswerKey,
+          t
+        }));
+      }
+    }
+    pagesHtml = pages.join('\n');
+  }
 
   return `<!DOCTYPE html>
 <html lang="${escapeHtml(t.locale)}">
@@ -419,7 +470,7 @@ function generateWorkbookHtml(options = {}) {
 /**
  * Render standard 2-exercise page
  */
-function renderPage({ pageNum, totalScoreText, subtitle, tip, footer, exercises, isAnswerKey, t }) {
+function renderPage({ pageNum, totalPages = 4, totalScoreText, subtitle, tip, footer, exercises, isAnswerKey, t }) {
   if (!exercises || exercises.length === 0) return '';
   const badgeText = isAnswerKey ? t('workbook.answerKeyBadge') : t('workbook.worksheetBadge');
 
@@ -432,7 +483,7 @@ function renderPage({ pageNum, totalScoreText, subtitle, tip, footer, exercises,
             <span>${escapeHtml(t('workbook.title'))}</span>
             <span class="badge">${escapeHtml(badgeText)}</span>
           </div>
-          <div style="font-size: 12px; color: #64748b; font-weight: 600;">${escapeHtml(t('common.pageOf', { page: pageNum, total: 4 }))}</div>
+          <div style="font-size: 12px; color: #64748b; font-weight: 600;">${escapeHtml(t('common.pageOf', { page: pageNum, total: totalPages }))}</div>
         </div>
         <div class="sub-title">${escapeHtml(subtitle)}</div>
         <div class="info-bar">
@@ -449,7 +500,7 @@ function renderPage({ pageNum, totalScoreText, subtitle, tip, footer, exercises,
 
     <div class="page-footer">
       <div>${escapeHtml(footer)}</div>
-      <div>${pageNum} / 4</div>
+      <div>${pageNum} / ${totalPages}</div>
     </div>
   </div>`;
 }
@@ -457,7 +508,7 @@ function renderPage({ pageNum, totalScoreText, subtitle, tip, footer, exercises,
 /**
  * Render Page 4 with Exercise 7 and Cheat Sheet Card
  */
-function renderPage4({ pageNum, totalScoreText, subtitle, footer, exercise, isAnswerKey, t }) {
+function renderPage4({ pageNum, totalPages = 4, totalScoreText, subtitle, footer, exercise, isAnswerKey, t }) {
   if (!exercise) return '';
   const badgeText = isAnswerKey ? t('workbook.answerKeyBadge') : t('workbook.worksheetBadge');
 
@@ -470,12 +521,12 @@ function renderPage4({ pageNum, totalScoreText, subtitle, footer, exercise, isAn
             <span>${escapeHtml(t('workbook.title'))}</span>
             <span class="badge">${escapeHtml(badgeText)}</span>
           </div>
-          <div style="font-size: 12px; color: #64748b; font-weight: 600;">${escapeHtml(t('common.pageOf', { page: pageNum, total: 4 }))}</div>
+          <div style="font-size: 12px; color: #64748b; font-weight: 600;">${escapeHtml(t('common.pageOf', { page: pageNum, total: totalPages }))}</div>
         </div>
         <div class="sub-title">${escapeHtml(subtitle)}</div>
         <div class="info-bar">
           <div class="info-item">${escapeHtml(t('common.studentName'))} <span class="underline-fill">${isAnswerKey ? '&nbsp;&nbsp;' + escapeHtml(t('common.standardAnswer')) : ''}</span></div>
-          <div class="info-item">${escapeHtml(t('common.totalScore'))} <span class="underline-fill" style="color:#2563eb; font-weight:bold;">${isAnswerKey ? '&nbsp;&nbsp;' + totalScoreText : '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/ 131 ⭐'}</span></div>
+          <div class="info-item">${escapeHtml(t('common.totalScore'))} <span class="underline-fill" style="color:#2563eb; font-weight:bold;">${isAnswerKey ? '&nbsp;&nbsp;' + totalScoreText : `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/ ${totalScoreText.split('/')[0].trim()} ⭐`}</span></div>
         </div>
       </div>
 
@@ -511,7 +562,7 @@ function renderPage4({ pageNum, totalScoreText, subtitle, footer, exercise, isAn
 
     <div class="page-footer">
       <div>${escapeHtml(footer)}</div>
-      <div>${pageNum} / 4</div>
+      <div>${pageNum} / ${totalPages}</div>
     </div>
   </div>`;
 }
@@ -524,8 +575,8 @@ function renderExerciseSection(ex, t) {
   const handBadgeClass = isTreble ? 'hand-badge' : 'hand-badge hand-badge-lh';
   const handText = isTreble ? t('exercises.rh') : t('exercises.lh');
 
-  const titleText = t(`exercises.ex${ex.id}Title`, { n: ex.id }) || `Exercise ${ex.id}`;
-  const subText = t(`exercises.ex${ex.id}Sub`, { count: ex.notes.length }) || `(${ex.notes.length} notes)`;
+  const titleText = ex.title || t(`exercises.ex${ex.id}Title`, { n: ex.id }) || `Exercise ${ex.id}`;
+  const subText = ex.subtitle || t(`exercises.ex${ex.id}Sub`, { count: ex.notes.length }) || `(${ex.notes.length} notes)`;
 
   return `
   <div class="exercise-section">

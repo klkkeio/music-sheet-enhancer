@@ -50,3 +50,42 @@ test('generator: generateSinglePageHtml produces single page layout', () => {
   assert.ok(html.includes('stave-1'));
   assert.ok(html.includes('stave-7'));
 });
+
+test('generator: handles arbitrary exercise count with dynamic pagination', () => {
+  const custom3 = [
+    {
+      id: 1,
+      clef: 'treble',
+      title: 'Custom Treble Practice',
+      notes: [{ key: 'c/4', letter: 'C' }, { key: 'd/4', letter: 'D' }]
+    },
+    {
+      id: 2,
+      clef: 'bass',
+      title: 'Custom Bass Practice',
+      notes: [{ key: 'a/2', letter: 'A' }, { key: 'c/3', letter: 'C' }]
+    },
+    {
+      id: 3,
+      clef: 'treble',
+      title: 'Custom Grand Finale',
+      notes: [{ key: 'g/4', letter: 'G' }]
+    }
+  ];
+
+  const html = generateWorkbookHtml({
+    exercises: custom3,
+    locale: 'en',
+    isAnswerKey: false,
+    standalone: false
+  });
+
+  // 3 exercises -> 2 pages
+  assert.ok(html.includes('id="page1"'));
+  assert.ok(html.includes('id="page2"'));
+  assert.ok(!html.includes('id="page3"'));
+  assert.ok(html.includes('Custom Treble Practice'));
+  assert.ok(html.includes('Custom Grand Finale'));
+  assert.ok(html.includes('Page 1 of 2'));
+  assert.ok(html.includes('Page 2 of 2'));
+});
