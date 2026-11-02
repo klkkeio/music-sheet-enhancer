@@ -1,0 +1,77 @@
+{
+  "meta": {
+    "locale": "zh-CN",
+    "name": "简体中文",
+    "direction": "ltr"
+  },
+  "common": {
+    "studentName": "学生姓名：",
+    "date": "完成日期：",
+    "score": "本页得分：",
+    "totalScore": "总得分：",
+    "pageOf": "第 {page} 页 / 共 {total} 页",
+    "standardAnswer": "标准答案"
+  },
+  "workbook": {
+    "title": "🎹 五线谱认音练习 (儿童大字清晰版)",
+    "worksheetBadge": "练习卷",
+    "answerKeyBadge": "参考答案",
+    "page1Subtitle": "仔细观察谱表上的每个音符并写出音名。（无需钢琴）",
+    "page2Subtitle": "仔细观察音符在线上还是间里，看清谱号哦！",
+    "page3Subtitle": "低音谱号间音练习与综合挑战！",
+    "page4Subtitle": "终极大通关与五线谱对照速查卡！",
+    "page1Footer": "🎵 琴童每日认音打卡 · 轻松掌握高音谱号五线与四间",
+    "page2Footer": "🎵 恭喜完成高音谱号！现在进入低音谱号探险之旅",
+    "page3Footer": "🎵 熟能生巧！低音谱号认得又快又准",
+    "page4Footer": "🏆 太棒了！你已经顺利完成全部 131 个音符的认音练习！",
+    "tips": {
+      "treble": "💡 高音谱号小秘籍：线音口诀：E - G - B - D - F (Every Good Boy Does Fine) | 间音口诀：F - A - C - E (FACE 脸庞)",
+      "bass": "💡 低音谱号登场！线音口诀：G - B - D - F - A (Good Boys Do Fine Always) | 间音口诀：A - C - E - G (All Cows Eat Grass)"
+    },
+    "cheatSheet": {
+      "title": "🌟 五线谱认音口诀与速查表",
+      "sub": "建议家长和小朋友常温习",
+      "trebleTitle": "𝄞 高音谱号 (Treble Clef - 右手)",
+      "trebleLines": "• 5条线（从下到上）：E - G - B - D - F",
+      "trebleLinesMnemonic": "(Every Good Boy Does Fine)",
+      "trebleSpaces": "• 4个间（从下到上）：F - A - C - E",
+      "trebleSpacesMnemonic": "(FACE 脸庞，音符在间里就像笑脸)",
+      "bassTitle": "𝄢 低音谱号 (Bass Clef - 左手)",
+      "bassLines": "• 5条线（从下到上）：G - B - D - F - A",
+      "bassLinesMnemonic": "(Good Boys Do Fine Always)",
+      "bassSpaces": "• 4个间（从下到上）：A - C - E - G",
+      "bassSpacesMnemonic": "(All Cows Eat Grass 小牛吃草)",
+      "solfegeMapping": "🎉 音名与唱名对应：C(do) · D(re) · E(mi) · F(fa) · G(sol) · A(la) · B(si)"
+    }
+  },
+  "singlePage": {
+    "title": "五线谱认音练习 (单页完整版)",
+    "subtitle": "仔细观察谱表上的每个音符并写出对应音名，注意区分高低音谱号。（无需钢琴）",
+    "clefHint": "谱号提示：1~3 题 高音谱表(右手) | 4~7 题 低音谱表(左手)",
+    "footer": "💡 口诀记忆：高音线 E-G-B-D-F · 高音间 F-A-C-E | 低音线 G-B-D-F-A · 低音间 A-C-E-G · 琴童识谱天天练"
+  },
+  "exercises": {
+    "rh": "右手 RH",
+    "lh": "左手 LH",
+    "treble": "高音谱号",
+    "bass": "低音谱号",
+    "lines": "线上的音",
+    "spaces": "间里的音",
+    "mixed": "综合认音",
+    "exPrefix": "第 {n} 题",
+    "ex1Title": "第 1 题 · 高音谱号【线上的音】",
+    "ex1Sub": "线音：E, G, B, D, F (共 {count} 题)",
+    "ex2Title": "第 2 题 · 高音谱号【间里的音】",
+    "ex2Sub": "间音：F, A, C, E (共 {count} 题)",
+    "ex3Title": "第 3 题 · 高音谱号【综合认音】",
+    "ex3Sub": "综合：线与间综合大考验 (共 {count} 题)",
+    "ex4Title": "第 4 题 · 低音谱号【线上的音】",
+    "ex4Sub": "线音：G, B, D, F, A (共 {count} 题)",
+    "ex5Title": "第 5 题 · 低音谱号【间里的音】",
+    "ex5Sub": "间音：A, C, E, G (共 {count} 题)",
+    "ex6Title": "第 6 题 · 低音谱号【综合认音 1】",
+    "ex6Sub": "综合 1：线与间混合练习 (共 {count} 题)",
+    "ex7Title": "第 7 题 · 低音谱号【综合大通关 2】",
+    "ex7Sub": "综合 2：全面大复习 (共 {count} 题)"
+  }
+}

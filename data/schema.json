@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MusicSheetExercises",
+  "description": "Schema for music sheet note exercises dataset",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["id", "clef", "notes"],
+    "properties": {
+      "id": {
+        "type": "integer",
+        "minimum": 1
+      },
+      "clef": {
+        "type": "string",
+        "enum": ["treble", "bass"]
+      },
+      "category": {
+        "type": "string",
+        "enum": ["lines", "spaces", "mixed"]
+      },
+      "title": {
+        "type": "string"
+      },
+      "subtitle": {
+        "type": "string"
+      },
+      "notes": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "object",
+          "required": ["key", "letter"],
+          "properties": {
+            "key": {
+              "type": "string",
+              "pattern": "^[a-gA-G][b#]?/[0-8]$",
+              "description": "Scientific pitch notation in VexFlow format (e.g. c/4, f#/5, bb/3)"
+            },
+            "letter": {
+              "type": "string",
+              "description": "Note name letter (e.g. C, D, E, F#, Bb)"
+            },
+            "solfege": {
+              "type": "string",
+              "description": "Solfège syllable (e.g. do, re, mi, fa, sol, la, si/ti)"
+            }
+          }
+        }
+      }
+    }
+  }
+}

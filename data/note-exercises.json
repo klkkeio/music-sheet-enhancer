@@ -1,0 +1,727 @@
+[
+  {
+    "id": 1,
+    "clef": "treble",
+    "hand": "右手 (RH)",
+    "title": "第 1 题 · 高音谱号【线上的音】",
+    "subtitle": "Treble Clef - Lines (E - G - B - D - F)",
+    "mnemonic": "口诀：Every Good Boy Does Fine (E-G-B-D-F)",
+    "notes": [
+      {
+        "key": "e/4",
+        "letter": "E",
+        "solfege": "mi"
+      },
+      {
+        "key": "g/4",
+        "letter": "G",
+        "solfege": "sol"
+      },
+      {
+        "key": "b/4",
+        "letter": "B",
+        "solfege": "si"
+      },
+      {
+        "key": "d/5",
+        "letter": "D",
+        "solfege": "re"
+      },
+      {
+        "key": "f/5",
+        "letter": "F",
+        "solfege": "fa"
+      },
+      {
+        "key": "b/4",
+        "letter": "B",
+        "solfege": "si"
+      },
+      {
+        "key": "e/4",
+        "letter": "E",
+        "solfege": "mi"
+      },
+      {
+        "key": "d/5",
+        "letter": "D",
+        "solfege": "re"
+      },
+      {
+        "key": "g/4",
+        "letter": "G",
+        "solfege": "sol"
+      },
+      {
+        "key": "f/5",
+        "letter": "F",
+        "solfege": "fa"
+      },
+      {
+        "key": "b/4",
+        "letter": "B",
+        "solfege": "si"
+      },
+      {
+        "key": "e/4",
+        "letter": "E",
+        "solfege": "mi"
+      },
+      {
+        "key": "f/5",
+        "letter": "F",
+        "solfege": "fa"
+      },
+      {
+        "key": "g/4",
+        "letter": "G",
+        "solfege": "sol"
+      },
+      {
+        "key": "f/5",
+        "letter": "F",
+        "solfege": "fa"
+      },
+      {
+        "key": "b/4",
+        "letter": "B",
+        "solfege": "si"
+      },
+      {
+        "key": "e/4",
+        "letter": "E",
+        "solfege": "mi"
+      },
+      {
+        "key": "b/4",
+        "letter": "B",
+        "solfege": "si"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "clef": "treble",
+    "hand": "右手 (RH)",
+    "title": "第 2 题 · 高音谱号【间里的音】",
+    "subtitle": "Treble Clef - Spaces (F - A - C - E)",
+    "mnemonic": "口诀：FACE 就像脸庞 (F-A-C-E)",
+    "notes": [
+      {
+        "key": "f/4",
+        "letter": "F",
+        "solfege": "fa"
+      },
+      {
+        "key": "a/4",
+        "letter": "A",
+        "solfege": "la"
+      },
+      {
+        "key": "c/5",
+        "letter": "C",
+        "solfege": "do"
+      },
+      {
+        "key": "e/5",
+        "letter": "E",
+        "solfege": "mi"
+      },
+      {
+        "key": "a/4",
+        "letter": "A",
+        "solfege": "la"
+      },
+      {
+        "key": "f/4",
+        "letter": "F",
+        "solfege": "fa"
+      },
+      {
+        "key": "c/5",
+        "letter": "C",
+        "solfege": "do"
+      },
+      {
+        "key": "e/5",
+        "letter": "E",
+        "solfege": "mi"
+      },
+      {
+        "key": "f/4",
+        "letter": "F",
+        "solfege": "fa"
+      },
+      {
+        "key": "c/5",
+        "letter": "C",
+        "solfege": "do"
+      },
+      {
+        "key": "a/4",
+        "letter": "A",
+        "solfege": "la"
+      },
+      {
+        "key": "e/5",
+        "letter": "E",
+        "solfege": "mi"
+      },
+      {
+        "key": "f/4",
+        "letter": "F",
+        "solfege": "fa"
+      },
+      {
+        "key": "c/5",
+        "letter": "C",
+        "solfege": "do"
+      },
+      {
+        "key": "e/5",
+        "letter": "E",
+        "solfege": "mi"
+      },
+      {
+        "key": "f/4",
+        "letter": "F",
+        "solfege": "fa"
+      },
+      {
+        "key": "c/5",
+        "letter": "C",
+        "solfege": "do"
+      },
+      {
+        "key": "a/4",
+        "letter": "A",
+        "solfege": "la"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "clef": "treble",
+    "hand": "右手 (RH)",
+    "title": "第 3 题 · 高音谱号【综合认音】",
+    "subtitle": "Treble Clef - Mixed Lines & Spaces",
+    "mnemonic": "综合练习：仔细辨别是线上音还是间里音",
+    "notes": [
+      {
+        "key": "b/4",
+        "letter": "B",
+        "solfege": "si"
+      },
+      {
+        "key": "f/4",
+        "letter": "F",
+        "solfege": "fa"
+      },
+      {
+        "key": "f/5",
+        "letter": "F",
+        "solfege": "fa"
+      },
+      {
+        "key": "g/4",
+        "letter": "G",
+        "solfege": "sol"
+      },
+      {
+        "key": "e/5",
+        "letter": "E",
+        "solfege": "mi"
+      },
+      {
+        "key": "e/4",
+        "letter": "E",
+        "solfege": "mi"
+      },
+      {
+        "key": "b/4",
+        "letter": "B",
+        "solfege": "si"
+      },
+      {
+        "key": "g/4",
+        "letter": "G",
+        "solfege": "sol"
+      },
+      {
+        "key": "d/5",
+        "letter": "D",
+        "solfege": "re"
+      },
+      {
+        "key": "f/4",
+        "letter": "F",
+        "solfege": "fa"
+      },
+      {
+        "key": "b/4",
+        "letter": "B",
+        "solfege": "si"
+      },
+      {
+        "key": "f/5",
+        "letter": "F",
+        "solfege": "fa"
+      },
+      {
+        "key": "a/4",
+        "letter": "A",
+        "solfege": "la"
+      },
+      {
+        "key": "e/4",
+        "letter": "E",
+        "solfege": "mi"
+      },
+      {
+        "key": "d/5",
+        "letter": "D",
+        "solfege": "re"
+      },
+      {
+        "key": "b/4",
+        "letter": "B",
+        "solfege": "si"
+      },
+      {
+        "key": "e/5",
+        "letter": "E",
+        "solfege": "mi"
+      },
+      {
+        "key": "g/4",
+        "letter": "G",
+        "solfege": "sol"
+      },
+      {
+        "key": "e/4",
+        "letter": "E",
+        "solfege": "mi"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "clef": "bass",
+    "hand": "左手 (LH)",
+    "title": "第 4 题 · 低音谱号【线上的音】",
+    "subtitle": "Bass Clef - Lines (G - B - D - F - A)",
+    "mnemonic": "口诀：Good Boys Do Fine Always (G-B-D-F-A)",
+    "notes": [
+      {
+        "key": "g/2",
+        "letter": "G",
+        "solfege": "sol"
+      },
+      {
+        "key": "b/2",
+        "letter": "B",
+        "solfege": "si"
+      },
+      {
+        "key": "d/3",
+        "letter": "D",
+        "solfege": "re"
+      },
+      {
+        "key": "f/3",
+        "letter": "F",
+        "solfege": "fa"
+      },
+      {
+        "key": "a/3",
+        "letter": "A",
+        "solfege": "la"
+      },
+      {
+        "key": "b/2",
+        "letter": "B",
+        "solfege": "si"
+      },
+      {
+        "key": "f/3",
+        "letter": "F",
+        "solfege": "fa"
+      },
+      {
+        "key": "g/2",
+        "letter": "G",
+        "solfege": "sol"
+      },
+      {
+        "key": "a/3",
+        "letter": "A",
+        "solfege": "la"
+      },
+      {
+        "key": "d/3",
+        "letter": "D",
+        "solfege": "re"
+      },
+      {
+        "key": "b/2",
+        "letter": "B",
+        "solfege": "si"
+      },
+      {
+        "key": "g/2",
+        "letter": "G",
+        "solfege": "sol"
+      },
+      {
+        "key": "a/3",
+        "letter": "A",
+        "solfege": "la"
+      },
+      {
+        "key": "d/3",
+        "letter": "D",
+        "solfege": "re"
+      },
+      {
+        "key": "f/3",
+        "letter": "F",
+        "solfege": "fa"
+      },
+      {
+        "key": "b/2",
+        "letter": "B",
+        "solfege": "si"
+      },
+      {
+        "key": "f/3",
+        "letter": "F",
+        "solfege": "fa"
+      },
+      {
+        "key": "g/2",
+        "letter": "G",
+        "solfege": "sol"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "clef": "bass",
+    "hand": "左手 (LH)",
+    "title": "第 5 题 · 低音谱号【间里的音】",
+    "subtitle": "Bass Clef - Spaces (A - C - E - G)",
+    "mnemonic": "口诀：All Cows Eat Grass (A-C-E-G)",
+    "notes": [
+      {
+        "key": "a/2",
+        "letter": "A",
+        "solfege": "la"
+      },
+      {
+        "key": "c/3",
+        "letter": "C",
+        "solfege": "do"
+      },
+      {
+        "key": "e/3",
+        "letter": "E",
+        "solfege": "mi"
+      },
+      {
+        "key": "g/3",
+        "letter": "G",
+        "solfege": "sol"
+      },
+      {
+        "key": "c/3",
+        "letter": "C",
+        "solfege": "do"
+      },
+      {
+        "key": "a/2",
+        "letter": "A",
+        "solfege": "la"
+      },
+      {
+        "key": "e/3",
+        "letter": "E",
+        "solfege": "mi"
+      },
+      {
+        "key": "g/3",
+        "letter": "G",
+        "solfege": "sol"
+      },
+      {
+        "key": "c/3",
+        "letter": "C",
+        "solfege": "do"
+      },
+      {
+        "key": "a/2",
+        "letter": "A",
+        "solfege": "la"
+      },
+      {
+        "key": "e/3",
+        "letter": "E",
+        "solfege": "mi"
+      },
+      {
+        "key": "c/3",
+        "letter": "C",
+        "solfege": "do"
+      },
+      {
+        "key": "g/3",
+        "letter": "G",
+        "solfege": "sol"
+      },
+      {
+        "key": "a/2",
+        "letter": "A",
+        "solfege": "la"
+      },
+      {
+        "key": "g/3",
+        "letter": "G",
+        "solfege": "sol"
+      },
+      {
+        "key": "e/3",
+        "letter": "E",
+        "solfege": "mi"
+      },
+      {
+        "key": "c/3",
+        "letter": "C",
+        "solfege": "do"
+      },
+      {
+        "key": "g/3",
+        "letter": "G",
+        "solfege": "sol"
+      },
+      {
+        "key": "e/3",
+        "letter": "E",
+        "solfege": "mi"
+      },
+      {
+        "key": "a/2",
+        "letter": "A",
+        "solfege": "la"
+      },
+      {
+        "key": "e/3",
+        "letter": "E",
+        "solfege": "mi"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "clef": "bass",
+    "hand": "左手 (LH)",
+    "title": "第 6 题 · 低音谱号【综合认音 1】",
+    "subtitle": "Bass Clef - Mixed Lines & Spaces (1)",
+    "mnemonic": "综合练习：注意低音谱号的中央C上方与下方位置",
+    "notes": [
+      {
+        "key": "b/2",
+        "letter": "B",
+        "solfege": "si"
+      },
+      {
+        "key": "e/3",
+        "letter": "E",
+        "solfege": "mi"
+      },
+      {
+        "key": "d/3",
+        "letter": "D",
+        "solfege": "re"
+      },
+      {
+        "key": "a/3",
+        "letter": "A",
+        "solfege": "la"
+      },
+      {
+        "key": "c/3",
+        "letter": "C",
+        "solfege": "do"
+      },
+      {
+        "key": "f/3",
+        "letter": "F",
+        "solfege": "fa"
+      },
+      {
+        "key": "a/3",
+        "letter": "A",
+        "solfege": "la"
+      },
+      {
+        "key": "c/3",
+        "letter": "C",
+        "solfege": "do"
+      },
+      {
+        "key": "f/3",
+        "letter": "F",
+        "solfege": "fa"
+      },
+      {
+        "key": "d/3",
+        "letter": "D",
+        "solfege": "re"
+      },
+      {
+        "key": "e/3",
+        "letter": "E",
+        "solfege": "mi"
+      },
+      {
+        "key": "g/2",
+        "letter": "G",
+        "solfege": "sol"
+      },
+      {
+        "key": "g/3",
+        "letter": "G",
+        "solfege": "sol"
+      },
+      {
+        "key": "c/3",
+        "letter": "C",
+        "solfege": "do"
+      },
+      {
+        "key": "a/3",
+        "letter": "A",
+        "solfege": "la"
+      },
+      {
+        "key": "e/3",
+        "letter": "E",
+        "solfege": "mi"
+      },
+      {
+        "key": "a/2",
+        "letter": "A",
+        "solfege": "la"
+      },
+      {
+        "key": "d/3",
+        "letter": "D",
+        "solfege": "re"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "clef": "bass",
+    "hand": "左手 (LH)",
+    "title": "第 7 题 · 低音谱号【综合认音 2】",
+    "subtitle": "Bass Clef - Mixed Lines & Spaces (2)",
+    "mnemonic": "综合大通关：快速反应每一个低音谱号音名！",
+    "notes": [
+      {
+        "key": "f/3",
+        "letter": "F",
+        "solfege": "fa"
+      },
+      {
+        "key": "d/3",
+        "letter": "D",
+        "solfege": "re"
+      },
+      {
+        "key": "g/3",
+        "letter": "G",
+        "solfege": "sol"
+      },
+      {
+        "key": "b/2",
+        "letter": "B",
+        "solfege": "si"
+      },
+      {
+        "key": "a/2",
+        "letter": "A",
+        "solfege": "la"
+      },
+      {
+        "key": "f/3",
+        "letter": "F",
+        "solfege": "fa"
+      },
+      {
+        "key": "d/3",
+        "letter": "D",
+        "solfege": "re"
+      },
+      {
+        "key": "a/3",
+        "letter": "A",
+        "solfege": "la"
+      },
+      {
+        "key": "d/3",
+        "letter": "D",
+        "solfege": "re"
+      },
+      {
+        "key": "g/2",
+        "letter": "G",
+        "solfege": "sol"
+      },
+      {
+        "key": "g/3",
+        "letter": "G",
+        "solfege": "sol"
+      },
+      {
+        "key": "d/3",
+        "letter": "D",
+        "solfege": "re"
+      },
+      {
+        "key": "e/3",
+        "letter": "E",
+        "solfege": "mi"
+      },
+      {
+        "key": "c/3",
+        "letter": "C",
+        "solfege": "do"
+      },
+      {
+        "key": "a/3",
+        "letter": "A",
+        "solfege": "la"
+      },
+      {
+        "key": "f/3",
+        "letter": "F",
+        "solfege": "fa"
+      },
+      {
+        "key": "b/2",
+        "letter": "B",
+        "solfege": "si"
+      },
+      {
+        "key": "g/3",
+        "letter": "G",
+        "solfege": "sol"
+      },
+      {
+        "key": "b/2",
+        "letter": "B",
+        "solfege": "si"
+      }
+    ]
+  }
+]

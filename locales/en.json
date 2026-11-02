@@ -1,0 +1,77 @@
+{
+  "meta": {
+    "locale": "en",
+    "name": "English",
+    "direction": "ltr"
+  },
+  "common": {
+    "studentName": "Student Name: ",
+    "date": "Date: ",
+    "score": "Page Score: ",
+    "totalScore": "Total Score: ",
+    "pageOf": "Page {page} of {total}",
+    "standardAnswer": "Standard Answer"
+  },
+  "workbook": {
+    "title": "🎹 Note Reading Exercise (Kids Large-Print Edition)",
+    "worksheetBadge": "Worksheet",
+    "answerKeyBadge": "Answer Key",
+    "page1Subtitle": "Practice looking at each note on the staff and work out what note it is. (No Piano Required)",
+    "page2Subtitle": "Look closely at whether each note is on a line or in a space. Pay attention to the clef!",
+    "page3Subtitle": "Bass clef space notes and mixed note challenges!",
+    "page4Subtitle": "Grand finale challenge and music staff reference cheat sheet!",
+    "page1Footer": "🎵 Daily Note Practice · Master Treble Clef Lines & Spaces",
+    "page2Footer": "🎵 Treble Clef complete! Now embark on the Bass Clef adventure",
+    "page3Footer": "🎵 Practice makes perfect! Read bass clef notes quickly and accurately",
+    "page4Footer": "🏆 Outstanding! You have completed all 131 note reading exercises!",
+    "tips": {
+      "treble": "💡 Treble Clef Secrets: Lines: E - G - B - D - F (Every Good Boy Does Fine) | Spaces: F - A - C - E (FACE)",
+      "bass": "💡 Bass Clef Arrival! Lines: G - B - D - F - A (Good Boys Do Fine Always) | Spaces: A - C - E - G (All Cows Eat Grass)"
+    },
+    "cheatSheet": {
+      "title": "🌟 Music Staff Cheat Sheet & Memory Rhymes",
+      "sub": "Recommended for parents and students to review frequently",
+      "trebleTitle": "𝄞 Treble Clef (Right Hand - RH)",
+      "trebleLines": "• 5 Lines (bottom to top): E - G - B - D - F",
+      "trebleLinesMnemonic": "(Every Good Boy Does Fine)",
+      "trebleSpaces": "• 4 Spaces (bottom to top): F - A - C - E",
+      "trebleSpacesMnemonic": "(FACE - letters spell 'FACE')",
+      "bassTitle": "𝄢 Bass Clef (Left Hand - LH)",
+      "bassLines": "• 5 Lines (bottom to top): G - B - D - F - A",
+      "bassLinesMnemonic": "(Good Boys Do Fine Always)",
+      "bassSpaces": "• 4 Spaces (bottom to top): A - C - E - G",
+      "bassSpacesMnemonic": "(All Cows Eat Grass)",
+      "solfegeMapping": "🎉 Note Letters & Solfège: C (do) · D (re) · E (mi) · F (fa) · G (sol) · A (la) · B (si/ti)"
+    }
+  },
+  "singlePage": {
+    "title": "Note Name Exercise",
+    "subtitle": "Practice looking at each note on the staff and work out what note it is. Beware of which clef it is in. (No Piano Required)",
+    "clefHint": "Clefs: 1~3 Treble (RH) | 4~7 Bass (LH)",
+    "footer": "💡 Memory tips: Treble lines E-G-B-D-F · Treble spaces F-A-C-E | Bass lines G-B-D-F-A · Bass spaces A-C-E-G · Practice daily"
+  },
+  "exercises": {
+    "rh": "RH Right Hand",
+    "lh": "LH Left Hand",
+    "treble": "Treble Clef",
+    "bass": "Bass Clef",
+    "lines": "Notes on Lines",
+    "spaces": "Notes in Spaces",
+    "mixed": "Mixed Notes",
+    "exPrefix": "Exercise {n}",
+    "ex1Title": "Exercise 1 · Treble Clef [Notes on Lines]",
+    "ex1Sub": "Lines: E, G, B, D, F ({count} notes)",
+    "ex2Title": "Exercise 2 · Treble Clef [Notes in Spaces]",
+    "ex2Sub": "Spaces: F, A, C, E ({count} notes)",
+    "ex3Title": "Exercise 3 · Treble Clef [Mixed Review]",
+    "ex3Sub": "Mixed: Lines & Spaces Challenge ({count} notes)",
+    "ex4Title": "Exercise 4 · Bass Clef [Notes on Lines]",
+    "ex4Sub": "Lines: G, B, D, F, A ({count} notes)",
+    "ex5Title": "Exercise 5 · Bass Clef [Notes in Spaces]",
+    "ex5Sub": "Spaces: A, C, E, G ({count} notes)",
+    "ex6Title": "Exercise 6 · Bass Clef [Mixed Review 1]",
+    "ex6Sub": "Mixed 1: Lines & Spaces Practice ({count} notes)",
+    "ex7Title": "Exercise 7 · Bass Clef [Grand Finale 2]",
+    "ex7Sub": "Mixed 2: Comprehensive Review ({count} notes)"
+  }
+}

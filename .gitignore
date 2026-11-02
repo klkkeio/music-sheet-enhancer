@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build outputs
+dist/*
+!dist/.gitkeep
+
+# Temporary & intermediate image files
+*.jpg
+*.jpeg
+annotated_*.png
+crop_*.png
+detected_*.png
+grid_*.png
+ruler_*.png
+zoom_*.png
+overview_*.png
+line*_*.png
+kids_wb_*.png
+kids_ans_*.png
+test_*.png
+test_*.html
+*.tmp
+
+# Raw scans and working drafts
+.raw_sources/
+BRW*.pdf
+kids_grand_staff_*.pdf
+*.log
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Environment & secrets
+.env
+.env.*

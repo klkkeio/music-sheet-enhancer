@@ -1,0 +1,43 @@
+{
+  "name": "music-sheet-enhancer",
+  "version": "1.0.0",
+  "description": "Vectorize, enhance, and export crystal-clear music reading workbooks, sheets, and answer keys in multiple languages with VexFlow.",
+  "main": "src/index.js",
+  "bin": {
+    "music-sheet-enhancer": "bin/cli.js"
+  },
+  "scripts": {
+    "start": "node bin/cli.js",
+    "test": "node --test tests/*.test.js",
+    "audit": "npm audit --audit-level=high",
+    "build:examples": "node bin/cli.js --format all --lang zh-TW --pdf"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/klkkeio/music-sheet-enhancer.git"
+  },
+  "keywords": [
+    "music-sheet",
+    "vexflow",
+    "music-notation",
+    "sight-reading",
+    "piano",
+    "sheet-music-enhancer",
+    "kids-music",
+    "i18n",
+    "pdf-generation",
+    "agent-skill"
+  ],
+  "author": "klkkeio",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/klkkeio/music-sheet-enhancer/issues"
+  },
+  "homepage": "https://github.com/klkkeio/music-sheet-enhancer#readme",
+  "dependencies": {
+    "vexflow": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
