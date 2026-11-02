@@ -19,9 +19,9 @@
 - 🔑 **Automated Answer Keys (`*-answers`)**: Paired answer workbooks and single sheets with bold pitch letters (`C`, `D`, `E`...) and solfège syllables (`do`, `re`, `mi`...) for teachers, parents, and self-checking students.
 - 🌐 **Multi-Lingual & Extensible (i18n)**:
   - **English (`en`)**: Standard international music education terminology.
-  - **Traditional Chinese - Taiwan (`zh-TW`)**: 繁體中文（台灣習慣：學生姓名、練習卷、參考答案、高音譜號小秘笈）.
-  - **Traditional Chinese - Hong Kong (`zh-HK`)**: 繁體中文（香港習慣：學生姓名、工作紙、參考答案、高音譜號小錦囊）.
-  - **Simplified Chinese (`zh-CN`)**: 简体中文（学生姓名、练习卷、参考答案、高音谱号小秘籍）.
+  - **Traditional Chinese - Taiwan (`zh-TW`)**: 繁體中文（台灣習慣：姓名、練習卷、參考答案、高音譜號小秘笈）.
+  - **Traditional Chinese - Hong Kong (`zh-HK`)**: 繁體中文（香港習慣：姓名、工作紙、參考答案、高音譜號小錦囊）.
+  - **Simplified Chinese (`zh-CN`)**: 简体中文（姓名、练习卷、参考答案、高音谱号小秘籍）.
   - **Extensible BCP 47 matching**: Auto-resolves culture variants (`en-US`, `en-AU`, `zh-Hant`, `zh-Hans`, `zh-SG`, `zh-MO`) and supports custom translation files (`--locale-file`).
 - ⚡ **Offline & Standalone**: Emits 100% self-contained HTML files (with embedded VexFlow bundle) that can be opened anywhere without internet or Node.js.
 - 🖨️ **Direct PDF Export**: Headless browser printing via Microsoft Edge, Google Chrome, or Chromium.
